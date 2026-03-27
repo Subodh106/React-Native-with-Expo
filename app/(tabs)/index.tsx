@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {View , Text ,Button, Alert, Switch , ScrollView, TextInput ,Pressable, Image, ImageBackground, } from "react-native";
+import {View , Text ,Button, Alert, Switch , ScrollView, TextInput ,Pressable, Image, ImageBackground, FlatList, } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StyleSheet } from "react-native";
 
@@ -23,6 +23,25 @@ function HomeScreen (){
   const handlePress = ()=>{
     console.log("text is pressed")
   }
+
+  const Data = [
+    {
+      id:"1",
+      data:"1"
+    },
+    {
+      id:"1",
+      data:"1"
+    },
+    {
+      id:"1",
+      data:"1"
+    },
+    {
+      id:"1",
+      data:"1"
+    }
+  ]
 
   return(
     <ScrollView>
@@ -87,6 +106,16 @@ function HomeScreen (){
       </ImageBackground>
       </SafeAreaView> 
         {/* SafeAreaView makesure that background Image doesn't cross the limit of display doesn't go outside of screen or navigation bar so safeAreaView is necessary of ImageBackground*/}
+
+        {/* Array with map is unoptimised aproach to render  multiple items so we use flatlist component */}
+          <FlatList
+          style={{backgroundColor:"white"}}
+          data={Data}
+          keyExtractor={(item)=>item.id}
+          renderItem={({item})=> <Text>{item.data}</Text>}
+          />
+
+          
        </ScrollView>
   )
 }
