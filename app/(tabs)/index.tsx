@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {View , Text ,Button, Alert, Switch , ScrollView} from "react-native";
+import {View , Text ,Button, Alert, Switch , ScrollView, TextInput} from "react-native";
 
 import { RetryAgent } from "undici-types";
 
@@ -14,9 +14,15 @@ function HomeScreen (){
       setisEnabled((prev)=>!prev)
       console.log(isEnabled)
   }
+
+  const[value,setvalue]=useState("");
+  const changeValue =(e:any)=>{
+    setvalue(e.target.value)
+  }
+
   return(
-    <View>
-      <Text style={{color:"white"}}>Hello from home screen</Text>
+    <ScrollView> // view is like div
+      <Text style={{color:"white"}}>Hello from home screen</Text> // text is like paragraph tag
       <Button 
         title="Click"
         onPress={pressMe}
@@ -36,7 +42,18 @@ function HomeScreen (){
         })
       }
       </ScrollView>
-    </View>
+
+      <TextInput
+      keyboardType="numbers-and-punctuation"
+      style={{borderWidth:1 , color:"white", borderColor:"white"}} 
+      value={value} 
+      onChangeText={setvalue}
+      multiline
+      numberOfLines={4}
+      placeholder="Enter your text"
+      />
+       {/* // text input is like input field in html and react nad it can be manipulate by using state and onChangeText method */}
+    </ScrollView>
   )
 }
 
