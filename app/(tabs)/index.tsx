@@ -1,8 +1,5 @@
 import { useState } from "react";
-import {View , Text ,Button, Alert, Switch , ScrollView, TextInput} from "react-native";
-
-import { RetryAgent } from "undici-types";
-
+import {View , Text ,Button, Alert, Switch , ScrollView, TextInput ,Pressable} from "react-native";
 function HomeScreen (){
   const pressMe = ()=>{
     Alert.alert("Button Click")
@@ -20,18 +17,26 @@ function HomeScreen (){
     setvalue(e.target.value)
   }
 
+  const handlePress = ()=>{
+    console.log("text is pressed")
+  }
+
   return(
-    <ScrollView> // view is like div
-      <Text style={{color:"white"}}>Hello from home screen</Text> // text is like paragraph tag
+    <ScrollView>
+       {/* // view is like div */}
+      <Text style={{color:"white"}}>Hello from home screen</Text> 
+      {/* // text is like paragraph tag */}
       <Button 
         title="Click"
         onPress={pressMe}
-      /> // Button is self closing and properties can be accessed
+      />
+       {/* // Button is self closing and properties can be accessed */}
       <Switch
       value={isEnabled}
       onValueChange={switchValueChange}
-      />// switch is like a on/off button and it can be manipulate by using state and function
-      <ScrollView> // it allows to scroll this portion in mobile
+      />
+      {/* // switch is like a on/off button and it can be manipulate by using state and function */}
+      <ScrollView>
       {
         [...Array(30)].map((_,i)=>{
           return(
@@ -42,7 +47,7 @@ function HomeScreen (){
         })
       }
       </ScrollView>
-
+           {/* // it allows to scroll this portion in mobile */}
       <TextInput
       keyboardType="numbers-and-punctuation"
       style={{borderWidth:1 , color:"white", borderColor:"white"}} 
@@ -52,7 +57,13 @@ function HomeScreen (){
       numberOfLines={4}
       placeholder="Enter your text"
       />
-       {/* // text input is like input field in html and react nad it can be manipulate by using state and onChangeText method */}
+       {/* text input is like input field in html and react nad it can be manipulate by using state and onChangeText method */}
+      <Pressable onPress={handlePress}>
+       <Text>Pressble text</Text>
+       </Pressable> 
+       {/* Pressable is used to make any element to anything you want if that element is pressed */}
+
+       
     </ScrollView>
   )
 }
