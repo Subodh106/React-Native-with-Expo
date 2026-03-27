@@ -1,5 +1,8 @@
 import { useState } from "react";
-import {View , Text ,Button, Alert, Switch , ScrollView, TextInput ,Pressable} from "react-native";
+import {View , Text ,Button, Alert, Switch , ScrollView, TextInput ,Pressable, Image, ImageBackground, } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { StyleSheet } from "react-native";
+
 function HomeScreen (){
   const pressMe = ()=>{
     Alert.alert("Button Click")
@@ -63,9 +66,41 @@ function HomeScreen (){
        </Pressable> 
        {/* Pressable is used to make any element to anything you want if that element is pressed */}
 
-       
-    </ScrollView>
+       <Image
+       source={{
+        uri:"adadf"
+       }}
+       style={{
+        height :150,
+        width:150,
+       }}
+       />
+        {/* Image tag is used to display image in the app */}
+      <SafeAreaView>
+      <ImageBackground 
+        source={{
+          uri:"afssf"
+        }}
+        style = {styles.image}
+      > 
+        <Text> Text inside image</Text>
+      </ImageBackground>
+      </SafeAreaView> 
+        {/* SafeAreaView makesure that background Image doesn't cross the limit of display doesn't go outside of screen or navigation bar so safeAreaView is necessary of ImageBackground*/}
+       </ScrollView>
   )
 }
+
+
+const styles = StyleSheet.create({
+  container:{
+    flex:1
+  },
+  image:{
+    flex:1,
+    justifyContent:"center"
+  }
+
+})
 
 export default HomeScreen;
